@@ -16,7 +16,18 @@ def factorial(number):
     return result
 
 def main():
-    number = int(input("Enter number: "))
+    limit = 1000000
+
+    numbers_equal_to_sum = []
+    for i in reversed(range(3, limit + 1)):
+        factorial_sum = 0
+        for digit in str(i):
+            factorial_sum += factorial(int(digit))
+        
+        if factorial_sum == i:
+            numbers_equal_to_sum.append(i)
+    
+    print(sum(numbers_equal_to_sum))
 
 if __name__ == "__main__":
     main()
